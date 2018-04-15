@@ -1,0 +1,14 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hglVqACd1C8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <input type="text" id="texto">
+
+<button id="boton">Comentar</button>
+
+<ul id="comentarios">
+    <% @comment.each do |comment| %>
+    <li>
+      <%= comment.content %>
+    </li>
+    <% end %>
+</ul>
+

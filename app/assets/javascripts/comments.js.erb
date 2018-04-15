@@ -1,0 +1,35 @@
+<% self.class.include Rails.application.routes.url_helpers %>
+
+$(document).on('turbolinks:load', function() {
+  function crearComentario() {
+ var comentario = $('#texto').val();
+ if (comentario != ''){
+   $.ajax({
+    url: '<%= comments_path %>',
+    type: 'POST',
+    data: {comment: {content: comentario}}
+  })
+  .done(function(data) {
+    // $('#comentarios').append('<li>' + data.content + '</li>')
+    // $('#texto').val('');
+    console.log("succes")
+  })
+  .fail(function() {
+    console.log("error");
+  });
+}else{
+   alert('Debes ingresar un comentario!!')
+ }
+};
+
+$('#boton').on('click', function () {
+  crearComentario();
+});
+
+$('#texto').keydown(function(event){
+ if (event.keyCode == 13){
+   crearComentario();
+}
+});
+
+});
